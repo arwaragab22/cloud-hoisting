@@ -1,19 +1,18 @@
-
+export const dynamic = "force-dynamic";
 
 import { NextResponse, NextRequest } from "next/server";
 import prisma from "@/util/db";
 import z from "zod";
 import bcrypt from "bcryptjs";
 
-
 export async function POST(request: NextRequest) {
-const registerSchema = z.object({
-  username: z.string().min(2).max(100), //.optional(),
-  email: z.string().min(3).max(200).email(),
-  password: z.string().min(6),
-});
+  const registerSchema = z.object({
+    username: z.string().min(2).max(100), //.optional(),
+    email: z.string().min(3).max(200).email(),
+    password: z.string().min(6),
+  });
   try {
-    const body = (await request.json()) 
+    const body = await request.json();
     const validation = registerSchema.safeParse(body);
     if (!validation.success) {
       return NextResponse.json(
@@ -38,21 +37,16 @@ const registerSchema = z.object({
         username: body.username,
         email: body.email,
         password: hash,
-      }, select:{
-
-    username: true,
-    isAdmin: true,id:true
-  
-      }
+      },
+      select: {
+        username: true,
+        isAdmin: true,
+        id: true,
+      },
     });
-    return NextResponse.json(
-      { newUser},
-      { status: 201 }
-    );
-
+    return NextResponse.json({ newUser }, { status: 201 });
   } catch (error) {
-  const err = error as Error;
-  return NextResponse.json({ message: err.message }, { status: 500 });
-}
-
+    const err = error as Error;
+    return NextResponse.json({ message: err.message }, { status: 500 });
+  }
 }

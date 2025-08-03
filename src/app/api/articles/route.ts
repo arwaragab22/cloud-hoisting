@@ -1,14 +1,11 @@
+export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from "next/server";
-import  Jwt  from "jsonwebtoken";
+import Jwt from "jsonwebtoken";
 import z from "zod";
 import prisma from "@/util/db";
 type SearchParams = { [key: string]: string | string[] | undefined };
 
-export async function GET(
-  request: NextRequest
-
-) {
-  
+export async function GET(request: NextRequest) {
   try {
     const pagenum = request.nextUrl.searchParams.get("page") ?? "1";
     const articles = await prisma.article.findMany({
@@ -21,7 +18,6 @@ export async function GET(
     const err = error as Error;
     return NextResponse.json({ message: err.message }, { status: 500 });
   }
-
 }
 const articledata = z.object({
   title: z.string().nonempty("please enter title"),
@@ -72,5 +68,4 @@ export async function POST(request: NextRequest) {
     const err = error as Error;
     return NextResponse.json({ message: err.message }, { status: 500 });
   }
-
 }

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { NextResponse, NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -50,7 +51,6 @@ export async function DELETE(
     const err = error as Error;
     return NextResponse.json({ message: err.message }, { status: 500 });
   }
-
 }
 //get profile
 export async function PUT(
@@ -85,5 +85,4 @@ export async function PUT(
     const err = error as Error;
     return NextResponse.json({ message: err.message }, { status: 500 });
   }
-
 }

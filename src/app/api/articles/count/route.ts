@@ -1,6 +1,6 @@
+export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/util/db";
-
 
 export async function GET(request: NextRequest) {
   try {
@@ -10,5 +10,4 @@ export async function GET(request: NextRequest) {
     const err = error as Error;
     return NextResponse.json({ message: err.message }, { status: 500 });
   }
-
 }
