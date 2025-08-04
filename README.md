@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# ðŸŒ Cloud Hosting Articles Dashboard
 
-First, run the development server:
+A full-featured admin dashboard for managing articles and comments related to cloud hosting services. Built with **Next.js**, **React**, and **Tailwind CSS**, this project includes authentication, authorization, and CRUD functionality for both users and admins.
+
+---
+
+## ðŸš€ Features
+
+- ðŸ” **Authentication** with JWT and bcryptjs
+- ðŸ‘¥ **Role-based access**:
+  - Users can add, edit, and delete their own comments
+  - Admins can manage all articles and comments
+- ðŸ§¾ Articles Table for admin with full CRUD
+- âš¡ Fast and responsive UI with Tailwind CSS
+- ðŸ§  Schema validation with Zod and React Hook Form
+- ðŸª Token stored in cookies and verified via server
+
+---
+
+## ðŸ› ï¸ Tech Stack
+
+- **Framework:** Next.js 14, React 18
+- **Styling:** Tailwind CSS
+- **Database:** Prisma ORM with SQLite (can switch to PostgreSQL)
+- **Auth:** JSON Web Token (JWT), bcryptjs
+- **Forms & Validation:** React Hook Form, Zod
+- **API Communication:** Axios
+- **UI Enhancements:** SweetAlert2, React Toastify, React Icons, React Paginate
+
+---
+
+## ðŸ“‚ Project Structure
+
+- `app/api/` â€” API routes
+- `components/` â€” Reusable UI components
+- `lib/` â€” Helper functions (e.g., token verification, session handling)
+- `middlewares/` â€” Middleware for authentication and role checks
+- `prisma/schema.prisma` â€” Database schema
+
+---
+
+## âš™ï¸ Getting Started
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/your-username/your-repo.git
+
+# 2. Navigate to the project directory
+cd your-repo
+
+# 3. Install dependencies
+npm install
+
+# 4. Generate and migrate Prisma schema
+npx prisma generate
+npx prisma migrate dev --name init
+
+# 5. Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ðŸ”‘ Admin Credentials
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Use the following credentials to access the admin dashboard and manage articles/comments:
 
-## Learn More
+- **Email:** `admin@gmail.com`
+- **Password:** `123456`
 
-To learn more about Next.js, take a look at the following resources:
+> Once logged in, navigate to the articles table to add/edit/delete content.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ðŸ“¸ Screenshots (Optional)
 
-## Deploy on Vercel
+> You can add images here to showcase your UI, dashboard, login screen, etc.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ðŸ“ Notes
+
+- The project does **not use Next.js Route Handlers** (e.g., `app/api/route.ts`) â€” it follows traditional API route setup.
+- JWT is stored in cookies and verified on each request for secure session handling.
+- You can easily switch from SQLite to PostgreSQL by updating the Prisma schema and `.env` configuration.
+
+---
+
+
