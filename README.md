@@ -73,11 +73,7 @@ Use the following credentials to access the admin dashboard and manage articles/
 
 ---
 
-##  Screenshots (Optional)
 
-> You can add images here to showcase your UI, dashboard, login screen, etc.
-
----
 
 ##  Notes
 
