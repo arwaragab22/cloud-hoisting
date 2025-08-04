@@ -20,7 +20,7 @@ function Addcommentform({ articleid }: { articleid: number }) {
 
     if (Comment) {
       await axios
-        .post("http://localhost:3000/api/comments", {
+        .post("https://cloud-hoisting.vercel.app/api/comments", {
           articleId: articleid,
           text: Comment,
         })

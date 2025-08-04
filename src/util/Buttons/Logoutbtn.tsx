@@ -13,7 +13,9 @@ function Logoutbtn() {
   const router = useRouter();
   const logoutfun = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/user/logout");
+      const response = await axios.get(
+        "https://cloud-hoisting.vercel.app/api/user/logout"
+      );
       router.push("/");
       router.refresh();
     } catch (error) {

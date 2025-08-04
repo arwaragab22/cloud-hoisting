@@ -5,20 +5,19 @@ import Searcharticlesinput from "./Searcharticlesinput";
 import Paginatenum from "@/comp/Paginatenum";
 import { getcount } from "@/util/count";
 
-
 export default async function Page({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
-  }) {
-    console.log("articles page")
+}) {
+  console.log("articles page");
   const { page } = searchParams;
   const page1 = Array.isArray(page) ? page[0] : page ?? "1";
   const countsnum = await getcount();
   const pagenumper = Math.ceil(countsnum / 4);
-      
+
   const data = await fetch(
-    `http://localhost:3000/api/articles?page=${page1 || 1}`,
+    `https://cloud-hoisting.vercel.app/api/articles?page=${page1 || 1}`,
     {
       cache: "no-store",
     }

@@ -1,16 +1,14 @@
-
 import axios from "axios";
 import { cookies } from "next/headers";
 import DeleteCommentButton from "./DeleteCommentButton";
 import { Comment } from "@/generated/prisma";
 
-
 const AdminCommentsTable = async () => {
-    const cookieStore = await cookies();
+  const cookieStore = await cookies();
 
-        const jwtttok = cookieStore.get("jwtToken");
+  const jwtttok = cookieStore.get("jwtToken");
   const jwtToken = jwtttok?.value;
-  const res = await fetch("http://localhost:3000/api/comments", {
+  const res = await fetch("https://cloud-hoisting.vercel.app/api/comments", {
     headers: {
       Cookie: `jwtToken=${jwtToken}`,
     },
@@ -18,8 +16,6 @@ const AdminCommentsTable = async () => {
   });
   const comments = await res.json();
 
-
-  
   return comments.length !== 0 ? (
     <section className="p-5">
       <h1 className="mb-7 text-2xl font-semibold text-gray-700">Comments</h1>
@@ -33,7 +29,7 @@ const AdminCommentsTable = async () => {
         </thead>
         <tbody>
           {comments.length > 0 &&
-            comments?.map((comment:Comment) => (
+            comments?.map((comment: Comment) => (
               <tr
                 key={comment.id}
                 className="border-b border-t border-gray-300"
@@ -57,6 +53,6 @@ const AdminCommentsTable = async () => {
       <p className="text-sm md:text-base">Be the first to leave a comment!</p>
     </div>
   );
-}
+};
 
 export default AdminCommentsTable;

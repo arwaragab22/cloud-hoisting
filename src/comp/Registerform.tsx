@@ -11,7 +11,7 @@ import { MdError } from "react-icons/md";
 import { useState } from "react";
 import { useRouter } from "next/navigation"; // ✅
 import React from "react";
- 
+
 import { FaInfoCircle } from "react-icons/fa";
 
 const FormSchema = z.object({
@@ -53,26 +53,26 @@ export default function RegisterPage() {
           onSubmit={handleSubmit(async (data) => {
             setloadinglogin(true);
             await axios
-              .post("http://localhost:3000/api/user/register", {
+              .post("https://cloud-hoisting.vercel.app/api/user/register", {
                 email: data.email,
                 password: data.password,
                 username: data.username,
               })
               .then(function (response) {
                 setloadinglogin(false);
-                
-                      toast.info("Account created! Please login to continue", {
-                        icon: <FaInfoCircle color="white" size={22} />,
-                        style: {
-                          background: "#3bb95f", // blue-600
-                          color: "white",
-                          borderRadius: "8px",
-                          padding: "12px 16px",
-                          fontSize: "16px",
-                        },
-                        position: "top-center",
-                        autoClose: 2000,
-                      });
+
+                toast.info("Account created! Please login to continue", {
+                  icon: <FaInfoCircle color="white" size={22} />,
+                  style: {
+                    background: "#3bb95f", // blue-600
+                    color: "white",
+                    borderRadius: "8px",
+                    padding: "12px 16px",
+                    fontSize: "16px",
+                  },
+                  position: "top-center",
+                  autoClose: 2000,
+                });
                 Routers.push("/Login");
               })
               .catch(function (error) {

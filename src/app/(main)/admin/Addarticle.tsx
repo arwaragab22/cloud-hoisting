@@ -49,14 +49,14 @@ const AddArticleForm = () => {
 
   const onsubmit = async (data: FormInput) => {
     setloadinglogin(true);
-    console.log(data)
+    console.log(data);
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/articles",
-        {title:data.title,  description: data.description}
+        "https://cloud-hoisting.vercel.app/api/articles",
+        { title: data.title, description: data.description }
       );
       console.log(response);
-          setloadinglogin(false);
+      setloadinglogin(false);
 
       toast.info("Article Added successfully ", {
         icon: <FaInfoCircle color="white" size={22} />,
@@ -71,9 +71,8 @@ const AddArticleForm = () => {
         autoClose: 2000,
       });
       reset();
-
     } catch (error) {
-          setloadinglogin(false);
+      setloadinglogin(false);
 
       if (axios.isAxiosError(error)) {
         if (error.response) {

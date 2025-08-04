@@ -35,31 +35,34 @@ export const ArticleFormSchema = z.object({
 });
 const EditArticleForm = ({ article }: EditArticleFormProps) => {
   const router = useRouter();
-    const [loadinglogin, setloadinglogin] = useState(false);
-    type FormInput = z.infer<typeof ArticleFormSchema>;
-    const {
-      register,
-      handleSubmit,
-      reset,
-      formState: { errors },
-    } = useForm<FormInput>({
-      resolver: zodResolver(ArticleFormSchema),
-      mode: "onSubmit", // ← ده بيفرض ظهور الأخطاء عند الضغط
+  const [loadinglogin, setloadinglogin] = useState(false);
+  type FormInput = z.infer<typeof ArticleFormSchema>;
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormInput>({
+    resolver: zodResolver(ArticleFormSchema),
+    mode: "onSubmit", // ← ده بيفرض ظهور الأخطاء عند الضغط
 
-      defaultValues: {
-        title: article.title,
-        description: article.description,
-      },
-    });
+    defaultValues: {
+      title: article.title,
+      description: article.description,
+    },
+  });
   const onsubmit = async (data: FormInput) => {
-    setloadinglogin(true)
-  
+    setloadinglogin(true);
+
     try {
-    const response=await axios.put(`http://localhost:3000/api/articles/${article.id}`, {
-    title:  data.title,
-    description:  data.description,
-    });
-          setloadinglogin(false);
+      const response = await axios.put(
+        `https://cloud-hoisting.vercel.app/api/articles/${article.id}`,
+        {
+          title: data.title,
+          description: data.description,
+        }
+      );
+      setloadinglogin(false);
 
       toast.info("Article updated successfully ", {
         icon: <FaInfoCircle color="white" size={22} />,
@@ -78,9 +81,8 @@ const EditArticleForm = ({ article }: EditArticleFormProps) => {
         description: data.description,
       });
       router.refresh();
-
     } catch (error) {
-          setloadinglogin(false);
+      setloadinglogin(false);
 
       if (axios.isAxiosError(error)) {
         if (error.response) {
@@ -106,7 +108,6 @@ const EditArticleForm = ({ article }: EditArticleFormProps) => {
     }
   };
 
-
   return (
     <form onSubmit={handleSubmit(onsubmit)} className="flex flex-col max-w-xl">
       <input
@@ -114,7 +115,6 @@ const EditArticleForm = ({ article }: EditArticleFormProps) => {
         type="text"
         placeholder="Enter Article Title"
         {...register("title")}
-
       />
       {errors.title && (
         <p className="text-red-600 bg-red-100 border border-red-300 px-4 py-2 rounded-md mt-2 text-sm shadow-sm my-2">

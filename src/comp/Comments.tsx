@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useRouter } from "next/navigation";
 
 import axios from "axios";
@@ -12,7 +12,7 @@ import { ClipLoader } from "react-spinners";
 type comeentuser = {
   comment: Comment & { user: User };
   userid: number;
-  isadmin:boolean
+  isadmin: boolean;
 };
 
 const Commentdetail = ({ comment, userid, isadmin }: comeentuser) => {
@@ -25,7 +25,7 @@ const Commentdetail = ({ comment, userid, isadmin }: comeentuser) => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/comments/${comment.id}`
+        `https://cloud-hoisting.vercel.app/api/comments/${comment.id}`
       );
       setloadinglogin(false);
 
@@ -83,39 +83,36 @@ const Commentdetail = ({ comment, userid, isadmin }: comeentuser) => {
           <p className="text-sm  bg-amber-500 text-white p-1 text-center rounded">
             {new Date(comment.createdAt).toDateString()}
           </p>
-          {(userid === comment.userId ||
-            isadmin)
-               && (
-                <div className="flex gap-2 justify-end mt-2">
-                  <button
-                    className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition  w-[35px] h-[35px] text-center"
-                    title="Edit"
-                    onClick={() => {
-                      setopenmodal(true);
-                    }}
-                  >
-                    <FaEdit size={20} />
-                  </button>
-                  <button
-                    disabled={loadinglogin}
-                    onClick={handledeletecomment}
-                    className="p-2 bg-red-500 text-white rounded hover:bg-red-600   w-[35px] h-[35px] text-center"
-                    title="Delete"
-                  >
-                    {loadinglogin ? (
-                      <ClipLoader
-                        color="#c9bfbf"
-                        loading
-                        size={20}
-                        speedMultiplier={1}
-                      />
-                    ) : (
-                      <FaTrash size={20} />
-                    )}
-                  </button>
-                </div>
-              )
-            }
+          {(userid === comment.userId || isadmin) && (
+            <div className="flex gap-2 justify-end mt-2">
+              <button
+                className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition  w-[35px] h-[35px] text-center"
+                title="Edit"
+                onClick={() => {
+                  setopenmodal(true);
+                }}
+              >
+                <FaEdit size={20} />
+              </button>
+              <button
+                disabled={loadinglogin}
+                onClick={handledeletecomment}
+                className="p-2 bg-red-500 text-white rounded hover:bg-red-600   w-[35px] h-[35px] text-center"
+                title="Delete"
+              >
+                {loadinglogin ? (
+                  <ClipLoader
+                    color="#c9bfbf"
+                    loading
+                    size={20}
+                    speedMultiplier={1}
+                  />
+                ) : (
+                  <FaTrash size={20} />
+                )}
+              </button>
+            </div>
+          )}
         </div>
       </div>
       {openmodal && (

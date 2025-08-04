@@ -14,7 +14,7 @@ type Props = {
 const SingleArticlePage = async ({
   params,
 }: {
-  params: Promise<{ id: string }>
+  params: Promise<{ id: string }>;
 }) => {
   const cookieStore = await cookies();
   let decoded: Jwt.JwtPayload | null = null;
@@ -32,10 +32,11 @@ const SingleArticlePage = async ({
 
   const { id } = await params;
   try {
-    const res = await axios.get(`http://localhost:3000/api/articles/${id}`);
+    const res = await axios.get(
+      `https://cloud-hoisting.vercel.app/api/articles/${id}`
+    );
     singlearticledata = res.data;
-  } catch  {
-  }
+  } catch {}
 
   return (
     <section className="fix-height container m-auto w-full px-5 pt-8 md:w-3/4">

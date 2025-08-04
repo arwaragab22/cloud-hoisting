@@ -5,19 +5,14 @@ import { getcount } from "@/util/count";
 import Paginatenum from "@/comp/Paginatenum";
 import DeleteArticleButton from "@/comp/DeleteArticleButton";
 
-
-
-
-const AdminArticlesTable =  async({page
- 
-} :{page:string})=> {
+const AdminArticlesTable = async ({ page }: { page: string }) => {
   const page1 = Array.isArray(page) ? page[0] : page ?? "1";
 
   const countsnum = await getcount();
   const pagenumper = Math.ceil(countsnum / 4);
 
   const data = await fetch(
-    `http://localhost:3000/api/articles?page=${page1 || 1}`,
+    `https://cloud-hoisting.vercel.app/api/articles?page=${page1 || 1}`,
     {
       cache: "no-store",
     }

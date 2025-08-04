@@ -1,15 +1,17 @@
 import EditArticleForm from "./EditArticleForm";
 import { Article } from "@/generated/prisma";
 
-const EditArticlePage = async ({ params }: any
-) => {
+const EditArticlePage = async ({ params }: any) => {
   let article: Article | null = null;
   const { id } = await params; // ✅ دلوقتي صح
   const articleId = Number(id);
   try {
-    const res = await fetch(`http://localhost:3000/api/articles/${articleId}`, {
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `https://cloud-hoisting.vercel.app/api/articles/${articleId}`,
+      {
+        cache: "no-store",
+      }
+    );
     article = await res.json();
   } catch (error) {
     console.error(error);

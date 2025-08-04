@@ -48,7 +48,7 @@ export default function LoginPage() {
           onSubmit={handleSubmit((data) => {
             setloadinglogin(true);
             axios
-              .post("http://localhost:3000/api/user/login", {
+              .post("https://cloud-hoisting.vercel.app/api/user/login", {
                 email: data.email,
                 password: data.password,
               })
@@ -59,7 +59,7 @@ export default function LoginPage() {
               })
               .catch(function (error) {
                 setloadinglogin(false);
-console.log(error?.response)
+                console.log(error?.response);
                 if (error?.response?.data?.message) {
                   toast.error(error.response.data.message, {
                     icon: <MdError size={20} color="white" />,
