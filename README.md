@@ -1,24 +1,24 @@
 
-# ðŸŒ Cloud Hosting Articles Dashboard
+#  Cloud Hosting Articles Dashboard
 
 A full-featured admin dashboard for managing articles and comments related to cloud hosting services. Built with **Next.js**, **React**, and **Tailwind CSS**, this project includes authentication, authorization, and CRUD functionality for both users and admins.
 
 ---
 
-## ðŸš€ Features
+##  Features
 
-- ðŸ” **Authentication** with JWT and bcryptjs
-- ðŸ‘¥ **Role-based access**:
+-  **Authentication** with JWT and bcryptjs
+-  **Role-based access**:
   - Users can add, edit, and delete their own comments
   - Admins can manage all articles and comments
-- ðŸ§¾ Articles Table for admin with full CRUD
-- âš¡ Fast and responsive UI with Tailwind CSS
-- ðŸ§  Schema validation with Zod and React Hook Form
-- ðŸª Token stored in cookies and verified via server
+-  Articles Table for admin with full CRUD
+-  Fast and responsive UI with Tailwind CSS
+-  Schema validation with Zod and React Hook Form
+-  Token stored in cookies and verified via server
 
 ---
 
-## ðŸ› ï¸ Tech Stack
+##  Tech Stack
 
 - **Framework:** Next.js 14, React 18
 - **Styling:** Tailwind CSS
@@ -30,17 +30,17 @@ A full-featured admin dashboard for managing articles and comments related to cl
 
 ---
 
-## ðŸ“‚ Project Structure
+##  Project Structure
 
-- `app/api/` â€” API routes
-- `components/` â€” Reusable UI components
-- `lib/` â€” Helper functions (e.g., token verification, session handling)
-- `middlewares/` â€” Middleware for authentication and role checks
-- `prisma/schema.prisma` â€” Database schema
+- `app/api/`  API routes
+- `components/`  Reusable UI components
+- `lib/`  Helper functions (e.g., token verification, session handling)
+- `middlewares/`  Middleware for authentication and role checks
+- `prisma/schema.prisma`  Database schema
 
 ---
 
-## âš™ï¸ Getting Started
+##  Getting Started
 
 ```bash
 # 1. Clone the repository
@@ -62,7 +62,7 @@ npm run dev
 
 ---
 
-## ðŸ”‘ Admin Credentials
+##  Admin Credentials
 
 Use the following credentials to access the admin dashboard and manage articles/comments:
 
@@ -73,15 +73,15 @@ Use the following credentials to access the admin dashboard and manage articles/
 
 ---
 
-## ðŸ“¸ Screenshots (Optional)
+##  Screenshots (Optional)
 
 > You can add images here to showcase your UI, dashboard, login screen, etc.
 
 ---
 
-## ðŸ“ Notes
+##  Notes
 
-- The project does **not use Next.js Route Handlers** (e.g., `app/api/route.ts`) â€” it follows traditional API route setup.
+- The project does **not use Next.js Route Handlers** (e.g., `app/api/route.ts`)  it follows traditional API route setup.
 - JWT is stored in cookies and verified on each request for secure session handling.
 - You can easily switch from SQLite to PostgreSQL by updating the Prisma schema and `.env` configuration.
 
